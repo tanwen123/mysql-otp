@@ -443,7 +443,9 @@ fetch_response(SockModule, Socket, Timeout, Proto, Acc) ->
                     {ok, lists:reverse(Acc1)}
             end;
         {error, timeout} ->
-            {error, timeout}
+            {error, timeout};
+	E ->
+	    E
     end.
 
 %% @doc Fetches packets for a result set. The column definitions are parsed but
