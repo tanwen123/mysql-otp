@@ -167,6 +167,9 @@ handle_call({query, Query, Timeout}, _From,
             %% For MySQL 4.x.x there is no way to recover from timeout except
             %% killing the connection itself.
             exit(timeout);
+	{error, E} ->
+	    %%  other error killing the connection itself.
+	    exit(E);
         QueryResult ->
             QueryResult
     end,
